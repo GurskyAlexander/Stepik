@@ -3,8 +3,6 @@ import csv
 from collections import namedtuple
 from datetime import datetime
 
-
-Friend = namedtuple('Friend', ['surname', 'name', 'meeting_date', 'meeting_time'])
 def get_datetime(seq: namedtuple) -> datetime:
     '''Функция возвращает дату и время встречи из именованного кортежа в формате datetime'''
     time = seq.meeting_date + ' ' + seq.meeting_time
@@ -12,9 +10,9 @@ def get_datetime(seq: namedtuple) -> datetime:
 
 
 with open('meetings.csv', encoding='utf-8') as csv_file:
+    Friend = namedtuple('Friend', ['surname', 'name', 'meeting_date', 'meeting_time'])
     friends = list(map(Friend._make, csv.reader(csv_file)))[1:]
-    sorted_friends = sorted(friends, key=lambda x: get_datetime(x))
-    for row in sorted_friends:
+    for row in sorted(friends, key=lambda x: get_datetime(x)):
         print(row.surname, row.name)
 
 
