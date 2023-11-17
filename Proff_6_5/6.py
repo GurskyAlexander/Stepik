@@ -8,7 +8,8 @@ def best_sender(messages: list, senders: list) -> str:
     for sender, message in zip(senders, messages):
         message_count[sender] += len(message.split())
 
-    return max(reversed(message_count.keys()), key=lambda x: message_count[x])
+    return max(reversed(message_count), key=lambda x: message_count[x])
+
 
 messages = ['Hi, Linda', 'Hi, Sam', 'How are you doing?']
 senders = ['Sam Fisher', 'Linda', 'Sam Fisher']
