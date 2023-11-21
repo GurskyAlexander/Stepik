@@ -4,7 +4,8 @@ from collections import Counter
 def print_bar_chart(data, mark):
     data = Counter(data)
     max_l = max(map(len, data))
-    for key, value in sorted(data.items(), key=lambda x: x[1], reverse=True):
+
+    for key, value in data.most_common():
         count = mark * value
         print(f'{key.ljust(max_l)} |{count}')
 
