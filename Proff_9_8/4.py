@@ -1,7 +1,6 @@
 from functools import wraps
 
-
-def prefix(string: str, to_the_end: bool = False):
+def prefix(string: str, to_the_end: bool =False):
     def decorator(foo):
         @wraps(foo)
         def wrapper(*args, **kwargs):
@@ -10,7 +9,5 @@ def prefix(string: str, to_the_end: bool = False):
                 return res + string
             else:
                 return string + res
-
         return wrapper
-
     return decorator
